@@ -1,16 +1,31 @@
 package com.helencoder.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import com.helencoder.utils.Calculation;
+import com.helencoder.utils.akka.SpringExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.concurrent.CompletableFuture;
 /**
  * Created by zhenghailun on 2018/5/8.
  */
 @Service
 public class AsyncService {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    private ActorSystem actorSystem;
 
-    public void perform(Object o) {
-        logger.info("Perform: {}", o);
+    @Autowired
+    private SpringExtension springExtension;
+
+    public CompletableFuture<String> run(long num) {
+        CompletableFuture<String> future = new CompletableFuture<>();
+        ActorRef workerActor = actorSystem.actorOf(
+                springExtension.props("asyncActor", future), "worker");
+        System.out.println("计算任务开始时间: " + System.currentTimeMillis());
+        workerActor.tell(new Calculation(num), null);
+        return future;
     }
+
 }

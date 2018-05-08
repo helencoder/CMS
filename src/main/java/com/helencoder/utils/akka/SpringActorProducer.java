@@ -1,4 +1,4 @@
-package com.helencoder.utils;
+package com.helencoder.utils.akka;
 
 import akka.actor.Actor;
 import akka.actor.IndirectActorProducer;
