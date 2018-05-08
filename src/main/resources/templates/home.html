@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>内容管理平台</title>
+
+    <!--Bootstrap-->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link th:href="@{/sidebar/sidebar.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/ace/css/ace-rtl.min.css}" rel="stylesheet"/>
+    <link th:href="@{/ace/css/ace-skins.min.css}" rel="stylesheet"/>
+    <link th:href="@{/toastr/toastr.min.css}" rel="stylesheet"/>
+</head>
+<body>
+    <div class="navbar navbar-default" id="navbar">
+        <input type="text" id="txt_userid" th:value="${ystId}" style="display: none" />
+        <ul class="navbar-header pull-left">
+            <a class="fa fa-list-ul menu-toggler" id="menu-toggler" href="#">
+                <i class="icon-reorder" style="font-size:20px;margin-left:-18px;margin-top:8px;display:flex;"></i>
+            </a>
+            <a href="#" class="navbar-brand">
+                <small>&nbsp;&nbsp;内容管理平台CMS</small>
+            </a>
+        </ul>
+        <div class="navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <li class="light-blue" style="height:50px;">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="ace/avatars/avatar2.png" alt="Admin's Photo"/>
+                        <span class="user-info">
+                            <small>欢迎光临，</small>
+                            <span id="ystid"></span>
+                        </span>
+                        <i class="icon-caret-down"></i>
+                    </a>
+                    <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a href="/logout"><i class="icon-off"></i>退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container" id="main-container">
+        <div class="main-container-inner">
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-collapse" id="sidebar-collapse" style="display:none;">
+                    <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                </div>
+                <ul class="nav nav-list" id="menu"></ul>
+            </div>
+            <div class="main-content">
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-xs-12" style="padding-left:5px;">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active"><a href="#Index" role="tab" data-toggle="tab">欢迎</a></li>
+                            </ul>
+                            <div class="tab-content" style="height:800px">
+                                <div role="tabpanel" class="tab-pane active" id="Index" style="height:100%">
+                                    <div class="wrapper">
+                                        <div class="border-circle" id="one"></div>
+                                        <div class="border-circle" id="two"></div>
+                                        <div class="background-circle">
+                                            <div class="triangle-light"></div>
+                                            <div class="body"></div>
+                                            <!--欢迎文字-->
+                                            <span class="shirt-text">I</span>
+                                            <span class="shirt-text">♥</span>
+                                            <span class="shirt-text">C</span>
+                                            <span class="shirt-text">M</span>
+                                            <span class="shirt-text">B</span>
+                                            <div class="triangle-dark"></div>
+                                        </div>
+                                        <div class="head">
+                                            <div class="ear" id="left"></div>
+                                            <div class="ear" id="right"></div>
+                                            <div class="hair-main">
+                                                <div class="sideburn" id="left"></div>
+                                                <div class="sideburn" id="right"></div>
+                                                <div class="hair-top"></div>
+                                            </div>
+                                            <div class="face">
+                                                <div class="hair-bottom"></div>
+                                                <div class="nose"></div>
+                                                <div class="eye-shadow" id="left">
+                                                    <div class="eyebrow"></div>
+                                                    <div class="eye"></div>
+                                                </div>
+                                                <div class="eye-shadow" id="right">
+                                                    <div class="eyebrow"></div>
+                                                    <div class="eye"></div>
+                                                </div>
+                                                <div class="mouth"></div>
+                                                <div class="shadow-wrapper">
+                                                    <div class="shadow"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="music-note" id="one">&#9835;</span>
+                                        <span class="music-note" id="two">&#9834;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/sidebar/sidebar.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap-tab.js}"></script>
+    <script th:src="@{/js/sidebar-config.js}"></script>
+    <script th:src="@{/ace/js/ace-extra.min.js}"></script>
+    <script th:src="@{/ace/js/ace.min.js}"></script>
+
+    <script th:src="@{/js/home.js}"></script>
+</body>
+</html>
