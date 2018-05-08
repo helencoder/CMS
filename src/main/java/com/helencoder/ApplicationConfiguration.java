@@ -1,7 +1,7 @@
 package com.helencoder;
 
 import akka.actor.ActorSystem;
-import com.helencoder.utils.SpringExtension;
+import com.helencoder.utils.akka.SpringExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
