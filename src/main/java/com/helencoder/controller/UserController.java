@@ -2,7 +2,6 @@ package com.helencoder.controller;
 
 import com.google.gson.Gson;
 import com.helencoder.entity.UserVo;
-import com.helencoder.service.AsyncService;
 import com.helencoder.service.UserService;
 import com.helencoder.utils.Helper;
 import org.json.JSONArray;

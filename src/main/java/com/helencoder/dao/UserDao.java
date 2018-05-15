@@ -23,40 +23,19 @@ public class UserDao {
     /**
      * 获取用户记录数
      *
-     * @param name 姓名
-     * @param phone 手机号
+     * @param sql
      */
-    public int getUserListCount(String name, String phone) {
-        String sql;
-        if (phone == null || phone.isEmpty()) {
-            sql = "SELECT COUNT(*) FROM User WHERE name LIKE '%" + name + "%'";
-        } else {
-            sql = "SELECT * FROM User WHERE name LIKE '%" + name + "%' AND phone=" + phone;
-        }
-        int count =  jdbcTemplate.queryForObject(sql,null, Integer.class);
-        return count;
+    public int getUserListCount(String sql) {
+        return jdbcTemplate.queryForObject(sql,null, Integer.class);
     }
 
     /**
      * 获取用户记录列表
      *
-     * @param limit 分页标识
-     * @param offset 分页标识
-     * @param name 姓名
-     * @param phone 手机号
+     * @param sql
      */
-    public List<UserVo> getUserList(String limit, String offset, String name, String phone) {
-        String sql;
-        if (phone == null || phone.isEmpty()) {
-            sql = "SELECT * FROM User WHERE name LIKE '%" + name +
-                    "%' LIMIT " + limit + " OFFSET " + offset;
-        } else {
-            sql = "SELECT * FROM User WHERE name LIKE '%" + name + "%' AND phone=" + phone +
-                    " LIMIT " + limit + " OFFSET " + offset;
-        }
-        List<UserVo> userList = getUserListFromDB(jdbcTemplate, sql);
-
-        return userList;
+    public List<UserVo> getUserList(String sql) {
+        return getUserListFromDB(jdbcTemplate, sql);
     }
 
     /**

@@ -24,7 +24,13 @@ public class UserService {
      * @param phone 手机号
      */
     public int getUserCount(String name, String phone) {
-        int count = userDao.getUserListCount(name, phone);
+        String sql;
+        if (phone == null || phone.isEmpty()) {
+            sql = "SELECT COUNT(*) FROM User WHERE name LIKE '%" + name + "%'";
+        } else {
+            sql = "SELECT * FROM User WHERE name LIKE '%" + name + "%' AND phone=" + phone;
+        }
+        int count = userDao.getUserListCount(sql);
         return count;
     }
 
@@ -37,7 +43,16 @@ public class UserService {
      * @param phone 手机号
      */
     public List<UserVo> getUserList(String limit, String offset, String name, String phone) {
-        List<UserVo> userList = userDao.getUserList(limit, offset, name, phone);
+        String sql;
+        if (phone == null || phone.isEmpty()) {
+            sql = "SELECT * FROM User WHERE name LIKE '%" + name +
+                    "%' LIMIT " + limit + " OFFSET " + offset;
+        } else {
+            sql = "SELECT * FROM User WHERE name LIKE '%" + name + "%' AND phone=" + phone +
+                    " LIMIT " + limit + " OFFSET " + offset;
+        }
+
+        List<UserVo> userList = userDao.getUserList(sql);
         return userList;
     }
 
