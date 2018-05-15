@@ -73,10 +73,14 @@ var TableInit = function () {
                 title: '标志位'
             }, {
                 field: 'createTime',
-                title: '创建时间'
+                title: '创建时间',
+                // format: 'yyyy-MM-dd HH:mm:ss'
             }, {
                 field: 'updateTime',
-                title: '更新时间'
+                title: '更新时间',
+                // formatter: function (value) {
+                //     return changeDateFormat(value)
+                // }
             }]
         });
     };
@@ -222,5 +226,23 @@ function highlight() {
                 tableId.rows[i].cells[2].innerHTML = cc;
             }
         }
+    }
+}
+
+
+//转换日期格式(时间戳转换为datetime格式)
+function changeDateFormat(cellval) {
+    var dateVal = cellval + "";
+    alert("原始数据为: " + dateVal);
+    if (cellval != null) {
+        var date = new Date(parseInt(dateVal.replace("/Date(", "").replace(")/", ""), 10));
+        var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+        var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+
+        var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+        var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+
+        return date.getFullYear() + "-" + month + "-" + currentDate + " " + hours + ":" + minutes + ":" + seconds;
     }
 }
