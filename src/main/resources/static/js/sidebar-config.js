@@ -8,7 +8,7 @@ $(function () {
         data: [{
             id: '1',
             text: '内容管理',
-            icon: 'icon-cog',
+            icon: 'icon-home',
             url: '/contentList'
         }, {
             id: '2',
@@ -17,6 +17,11 @@ $(function () {
             url: '/userList?param=' + userId
         }, {
             id: '3',
+            text: '摘要管理',
+            icon: 'icon-cog',
+            url: '/abstractList'
+        }, {
+            id: '4',
             text: '系统管理',
             icon: 'icon-star',
             url: 'http://127.0.0.1:8080/'
