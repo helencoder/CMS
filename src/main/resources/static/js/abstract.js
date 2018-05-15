@@ -13,6 +13,12 @@ $(function () {
     var oButtonInit = new ButtonInit();
     oButtonInit.Init();
 
+    // 关键字高亮显示
+    $('#tb_abstract').on('load-success.bs.table',function(data){
+        console.log("load success");
+        highlight();
+    });
+
 });
 
 
@@ -193,9 +199,28 @@ var ButtonInit = function () {
         });
 
         $("#btn_query").click(function () {
-            $("#tb_abstract").bootstrapTable('refresh');
+            $("#tb_abstract").bootstrapTable('refresh', {
+                onLoadSuccess: highlight()
+            });
         });
     };
 
     return oInit;
 };
+
+
+function highlight() {
+    var keyword = $("#txt_search_content").val();
+    var reg = new RegExp(keyword, 'ig');
+    var tableId = document.getElementById("tb_abstract");
+    if (keyword !== null && keyword !== undefined && keyword.length !== 0) {
+        for (var i = 1; i < tableId.rows.length; i++) {
+            var bb = tableId.rows[i].cells[2].innerHTML;
+            if (bb.indexOf(keyword) >= 0) {
+                var displayColor = '<span style="background-color:#FFFF33">' + keyword + '</span>';
+                var cc = bb.replace(reg, displayColor);
+                tableId.rows[i].cells[2].innerHTML = cc;
+            }
+        }
+    }
+}
