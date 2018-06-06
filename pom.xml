@@ -14,6 +14,11 @@
         <version>1.5.10.RELEASE</version>
     </parent>
 
+    <properties>
+        <es.version>6.2.3</es.version>
+        <!--<elasticsearch.version>6.2.3</elasticsearch.version>-->
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -31,6 +36,23 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>${es.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>transport</artifactId>
+            <version>${es.version}</version>
+        </dependency>
+        <!-- Runtime, for Embedded Elasticsearch,
+         comment this if connect to external elastic search server-->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <scope>runtime</scope>
+        </dependency>
         <!--JSON-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -46,6 +68,12 @@
             <groupId>com.typesafe.akka</groupId>
             <artifactId>akka-actor_2.12</artifactId>
             <version>2.5.12</version>
+        </dependency>
+        <!--ehcache-->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>2.10.3</version>
         </dependency>
     </dependencies>
 
