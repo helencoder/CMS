@@ -13,8 +13,10 @@ public class AbstractVo {
     private String result;
     private String similarity;
     private String flag;
-    private Timestamp createTime;
-    private Timestamp updateTime;
+    private String createTime;
+    private String updateTime;
+//    private Timestamp createTime;
+//    private Timestamp updateTime;
 
     public String getId() {
         return id;
@@ -64,39 +66,55 @@ public class AbstractVo {
         this.flag = flag;
     }
 
-    public Timestamp getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime() {
-        Timestamp timeStamp = new Timestamp(new Date().getTime());
-        this.createTime = timeStamp;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    public void setCreateTime(Timestamp timestamp) {
-        this.createTime = timestamp;
-    }
-
-    public void setCreateTime(Date date) {
-        Timestamp timeStamp = new Timestamp(date.getTime());
-        this.createTime = timeStamp;
-    }
-
-    public Timestamp getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime() {
-        Timestamp timeStamp = new Timestamp(new Date().getTime());
-        this.updateTime = timeStamp;
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public void setUpdateTime(Timestamp timestamp) {
-        this.updateTime = timestamp;
-    }
-
-    public void setUpdateTime(Date date) {
-        Timestamp timeStamp = new Timestamp(date.getTime());
-        this.updateTime = timeStamp;
-    }
+    //    public Timestamp getCreateTime() {
+//        return createTime;
+//    }
+//
+//    public void setCreateTime() {
+//        Timestamp timeStamp = new Timestamp(new Date().getTime());
+//        this.createTime = timeStamp;
+//    }
+//
+//    public void setCreateTime(Timestamp timestamp) {
+//        this.createTime = timestamp;
+//    }
+//
+//    public void setCreateTime(Date date) {
+//        Timestamp timeStamp = new Timestamp(date.getTime());
+//        this.createTime = timeStamp;
+//    }
+//
+//    public Timestamp getUpdateTime() {
+//        return updateTime;
+//    }
+//
+//    public void setUpdateTime() {
+//        Timestamp timeStamp = new Timestamp(new Date().getTime());
+//        this.updateTime = timeStamp;
+//    }
+//
+//    public void setUpdateTime(Timestamp timestamp) {
+//        this.updateTime = timestamp;
+//    }
+//
+//    public void setUpdateTime(Date date) {
+//        Timestamp timeStamp = new Timestamp(date.getTime());
+//        this.updateTime = timeStamp;
+//    }
 }

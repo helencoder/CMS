@@ -54,8 +54,8 @@ public class AbstractDao {
                 abstractVo.setResult(resultSet.getString("result"));
                 abstractVo.setSimilarity(resultSet.getString("similarity"));
                 abstractVo.setFlag(resultSet.getString("flag"));
-                abstractVo.setCreateTime(resultSet.getTimestamp("createTime"));
-                abstractVo.setUpdateTime(resultSet.getTimestamp("updateTime"));
+                abstractVo.setCreateTime(resultSet.getString("createTime"));
+                abstractVo.setUpdateTime(resultSet.getString("updateTime"));
                 return abstractVo;
             }
         });

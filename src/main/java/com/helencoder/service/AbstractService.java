@@ -22,14 +22,14 @@ public class AbstractService {
      * @param abs 摘要
      */
     public int getAbstractCount(String content, String abs) {
-//        String sql = "SELECT COUNT(*) FROM Abstract WHERE content LIKE '%" + content + "%'" +
-//                " AND abs LIKE '%" + abs + "%'";
-        String sql;
-        if (content.isEmpty()) {
-            sql = "SELECT COUNT(*) FROM Abstract";
-        } else {
-            sql = "SELECT COUNT(*) FROM Abstract t WHERE match(t.content) against ('*" + content + "*')";
-        }
+        String sql = "SELECT COUNT(*) FROM Abstract WHERE content LIKE '%" + content + "%'" +
+                " AND abs LIKE '%" + abs + "%'";
+//        String sql;
+//        if (content.isEmpty()) {
+//            sql = "SELECT COUNT(*) FROM Abstract";
+//        } else {
+//            sql = "SELECT COUNT(*) FROM Abstract t WHERE match(t.content) against ('*" + content + "*')";
+//        }
         return abstractDao.getAbstractListCount(sql);
     }
 
@@ -41,14 +41,14 @@ public class AbstractService {
      * @param offset 分页标识
      */
     public List<AbstractVo> getAbstractList(String content, String abs, String limit, String offset) {
-        String sql;
-        if (content.isEmpty()) {
-            sql = "SELECT * FROM Abstract LIMIT " + limit + " OFFSET " + offset;
+        String sql = "";
+        if (limit.isEmpty() && offset.isEmpty()) {
+            sql = "SELECT * FROM Abstract WHERE content LIKE '%" + content + "%'" +
+                    " AND abs LIKE '%" + abs + "%'";
         } else {
-            sql = "SELECT * FROM Abstract t WHERE match(t.content) against ('*" + content + "*')" +
-                    " LIMIT " + limit + " OFFSET " + offset;
+            sql = "SELECT * FROM Abstract WHERE content LIKE '%" + content + "%'" +
+                    " AND abs LIKE '%" + abs + "%' LIMIT " + limit + " OFFSET " + offset;
         }
-
         return abstractDao.getAbstractList(sql);
     }
 

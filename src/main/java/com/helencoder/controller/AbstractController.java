@@ -47,8 +47,16 @@ public class AbstractController {
 
             Gson gson = new Gson();
             Map<String, Object> resultPkg = new HashMap<String, Object>();
+            long startTime = System.currentTimeMillis();
             List<AbstractVo> abstractList = abstractService.getAbstractList(content, abs, limit, offset);
+            long endTime = System.currentTimeMillis();
+            logger.info("获取数据列表耗时: " + (endTime - startTime) + "ms");
+
+            long start = System.currentTimeMillis();
             int total = abstractService.getAbstractCount(content, abs);
+            long end = System.currentTimeMillis();
+            logger.info("获取数据总数耗时: " + (end - start) + "ms");
+
             resultPkg.put("total", total);
             resultPkg.put("rows", abstractList);
             return gson.toJson(resultPkg);
